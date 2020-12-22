@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    expose:
+      - '9000'
+    volumes:
+      - .:/var/www/html:delegated,z
+
+  web:
+    build: docker/nginx/
+    ports:
+      - '1758:80'
+    volumes:
+      - ./public:/var/www/html/public:delegated,z
+    links:
+      - app
+    depends_on:
+      - app

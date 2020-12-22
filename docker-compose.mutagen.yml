@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    expose:
+      - '9000'
+    volumes:
+      - source:/var/www/html/
+
+  web:
+    build: docker/nginx/
+    ports:
+      - '1758:80'
+    volumes:
+      - source:/var/www/html/
+    links:
+      - app
+    depends_on:
+      - app
+
+volumes:
+  source:
+
+x-mutagen:
+  sync:
+    defaults:
+      ignore:
+        vcs: true
+    source:
+      alpha: "."
+      beta: "volume://source"
+      mode: "two-way-resolved"
+      ignore:
+        paths:
+      configurationBeta:
+        permissions:
+          defaultFileMode: 0666
+          defaultDirectoryMode: 0777
