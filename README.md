@@ -20,9 +20,25 @@ $ docker-compose up
 
 ```
 $ docker-compose down
+$ rm -rf var/tmp/hal-app
 ```
 
-2. Docker + Mutagen
+2. Docker + docker-sync
+
+```
+$ docker-sync start
+$ docker-compose -f docker-compose.docker_sync.yml up -d
+```
+
+[http://localhost:1758/](http://localhost:1758/)
+
+```
+$ docker-compose down
+$ docker-sync stop
+$ rm -rf var/tmp/hal-app
+```
+
+3. Docker + Mutagen
 
 ```
 $ mutagen compose -f docker-compose.mutagen.yml up -d
@@ -31,36 +47,25 @@ $ mutagen compose -f docker-compose.mutagen.yml up -d
 [http://localhost:1758/](http://localhost:1758/)
 
 ```
-$ mutagen down
-```
-
-3. Docker + docker-sync
-
-```
-$ docker-sync start
-$ docker-compose  -f docker-compose.docker_sync.yml up
-```
-
-[http://localhost:1758/](http://localhost:1758/)
-
-```
-$ docker-compose down
-$ docker-sync end
+$ mutagen compose -f docker-compose.mutagen.yml down
+$ rm -rf var/tmp/hal-app
 ```
 
 ## Performance records
 
-Chrome developer tool [Network] tab results:
+BEAR.Sunday application performance results by environment :
 
-```
-Default Docker         
-Docker + Mutagen      
-Docker + docker-sync
-```
+| Environment | Time [※] |
+|---|---|
+| Default Docker | 1.10 sec |
+| Docker + docker-sync | 117 ms  |
+| Docker + Mutagen | 162 ms |
+
+[※] Mesured by Chrome DevTools [Network] tab
 
 ## Links
 
-- ★TODO★
+- TODO
 
 ## License
 

@@ -1,0 +1,6 @@
+version: "2"
+syncs:
+  sync-volume:
+    src: './'
+    sync_strategy: 'unison'
+    sync_excludes: ['.idea']

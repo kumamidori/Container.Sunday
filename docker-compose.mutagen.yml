@@ -8,33 +8,34 @@ services:
     expose:
       - '9000'
     volumes:
-      - source:/var/www/html/
+      - source-con-sun:/var/www/html/
 
   web:
     build: docker/nginx/
     ports:
       - '1758:80'
     volumes:
-      - source:/var/www/html/
+      - source-con-sun:/var/www/html/
     links:
       - app
     depends_on:
       - app
 
 volumes:
-  source:
+  source-con-sun:
 
 x-mutagen:
   sync:
     defaults:
       ignore:
         vcs: true
-    source:
+    source-con-sun:
       alpha: "."
-      beta: "volume://source"
+      beta: "volume://source-con-sun"
       mode: "two-way-resolved"
       ignore:
         paths:
+          - var/log/hal-app/last.logref.log
       configurationBeta:
         permissions:
           defaultFileMode: 0666
