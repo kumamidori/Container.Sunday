@@ -1,10 +1,11 @@
-# Cantainer.Sunday (2020, kumamidori version)
+# Cantainer.Sunday (Dec. 2020 version)
 
-- PHP8, BEAR.Sunday and Mutagen environment performance records
+- Example of BEAR.Sunday application with Docker (PHP7.4, docker-sync, Mutagen)
 - Based on the following contents by gamu1012:
 
-- [Docker \+ BEAR\.Sundayで開発するときはdocker\-syncを使おう \- Qiita](https://qiita.com/gamu1012/items/a66781f9d25bfe4e9c3f)
-- [hiroki\-saito/Container\.Sunday: BEAR\.SundayをDocker for Macで動かしたときの計測用リポジトリ](https://github.com/hiroki-saito/Container.Sunday)
+[Docker \+ BEAR\.Sundayで開発するときはdocker\-syncを使おう \- Qiita](https://qiita.com/gamu1012/items/a66781f9d25bfe4e9c3f)
+
+[hiroki\-saito/Container\.Sunday: BEAR\.SundayをDocker for Macで動かしたときの計測用リポジトリ](https://github.com/hiroki-saito/Container.Sunday)
 
 ## Usage
 

@@ -1,8 +1,16 @@
 {
     "name": "kumamidori/example-container",
     "type": "project",
-    "license": "proprietary",
-    "description": "",
+    "authors": [
+        {
+            "name": "hiroki-saito"
+        },
+        {
+            "name": "YAMANE Nana"
+        }
+    ],
+    "license": "CC0-1.0",
+    "description": "Example of BEAR.Sunday application on Docker",
     "require": {
         "php": ">=7.4.0",
         "bear/package": "^1.10",
