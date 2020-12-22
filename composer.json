@@ -1,0 +1,75 @@
+{
+    "name": "kumamidori/example-container",
+    "type": "project",
+    "license": "proprietary",
+    "description": "",
+    "require": {
+        "php": ">=7.4.0",
+        "bear/package": "^1.10",
+        "bear/dotenv": "^1.0"
+    },
+    "require-dev": {
+        "ext-json": "*",
+        "bear/devtools": "^0.1",
+        "bear/qatools": "^1.9",
+        "doctrine/coding-standard": "^8.1",
+        "roave/security-advisories": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Kumamidori\\ExampleContainer\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Kumamidori\\ExampleContainer\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-update-cmd": "@setup",
+        "post-install-cmd": "@setup",
+        "setup": "php bin/setup.php",
+        "compile": "bear.compile 'Kumamidori\\ExampleContainer' prod-app ./",
+        "test": "phpunit",
+        "tests": [
+            "@cs",
+            "@qa",
+            "@test"
+        ],
+        "coverage": "php -dzend_extension=xdebug.so ./vendor/bin/phpunit --coverage-text --coverage-html=build/coverage --log-junit=build/coverage/junit.xml",
+        "pcov": "php -d pcov.enabled=1 ./vendor/bin/phpunit --coverage-text --coverage-html=build/coverage --log-junit=build/coverage/junit.xml",
+        "cs": "phpcs",
+        "cs-fix": "phpcbf",
+        "qa": [
+            "phpmd src text ./phpmd.xml",
+            "phpstan analyse -c phpstan.neon --no-progress",
+            "psalm --no-progress"
+        ],
+        "metrics": [
+            "@coverage",
+            "phpmetrics --junit=build/coverage/junit.xml --config=./phpmetrics.json"
+        ],
+        "serve": "php -dzend_extension=xdebug.so -S 127.0.0.1:8080 -t public",
+        "app": "php bin/app.php",
+        "page": "php bin/page.php"
+    },
+    "scripts-descriptions": {
+        "setup": "Setup the project",
+        "compile": "Compile scripts for the production. See http://bearsunday.github.io/manuals/1.0/en/production.html",
+        "test": "Run unit tests",
+        "tests": "Run tests and quality checks",
+        "coverage": "Generate test coverage report",
+        "pcov": "Generate test coverage report (pcov)",
+        "cs": "Checks the coding standard",
+        "cs-fix": "Fix the coding standard",
+        "qa": "Run quality checks",
+        "metrics": "Build metrics report",
+        "serve": "Start built-in server",
+        "app": "Request app resource",
+        "page": "Request page resource"
+    },
+    "config": {
+        "sort-packages": true,
+        "process-timeout": 0
+    }
+}
